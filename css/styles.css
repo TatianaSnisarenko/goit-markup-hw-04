@@ -16,6 +16,15 @@
   /* Fonts */
   --font-family: 'Roboto', sans-serif;
   --second-family: 'Raleway', sans-serif;
+
+  /* Shadow */
+  --card-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08),
+    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 2px 1px 0px rgba(46, 47, 66, 0.08);
+
+  /* Transitions */
+  --transition-funtion: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-time: 250ms;
 }
 
 /* #region Base styles */
@@ -129,6 +138,40 @@ button {
   flex-wrap: wrap;
 }
 
+.team-icon-list,
+.socials-icon-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.team-icon-item,
+.socials-icon-item {
+  height: 40px;
+  width: 40px;
+}
+
+.team-icon,
+.socials-icon {
+  fill: var(--cloud);
+}
+
+.team-icon-button,
+.socials-icon-button {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--iris);
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color var(--transition-time) var(--transition-funtion);
+}
+
 /* #endregion */
 
 /* #region Logo */
@@ -180,7 +223,20 @@ button {
   font-weight: 500;
   color: var(--navy-blue);
   padding: 24px 0;
-  display: block;
+  display: inline-block;
+  transition: color var(--transition-time) var(--transition-funtion);
+  position: relative;
+}
+
+.selected::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 4px;
+  background-color: var(--ocean);
+  border-radius: 2px;
 }
 
 .address-list {
@@ -190,6 +246,7 @@ button {
 
 .address-link {
   color: var(--slate);
+  transition: color var(--transition-time) var(--transition-funtion);
 }
 
 .nav-link:hover,
@@ -205,6 +262,11 @@ button {
 
 .hero {
   background-color: var(--navy-blue);
+  background-image: linear-gradient(var(--grey), var(--grey)),
+    url('../images/hero/hero-image.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   padding: 188px 0;
 }
 
@@ -239,6 +301,7 @@ button {
   border-radius: 4px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   border: 0;
+  transition: background-color var(--transition-time) var(--transition-funtion);
 }
 
 .order-btn:hover,
@@ -292,39 +355,6 @@ button {
   text-align: center;
 }
 
-.team-icon-list,
-.socials-icon-list {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  margin-top: 8px;
-}
-
-.team-icon-item,
-.socials-icon-item {
-  height: 40px;
-  width: 40px;
-}
-
-.team-icon,
-.socials-icon {
-  fill: var(--cloud);
-}
-
-.team-icon-button,
-.socials-icon-button {
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  background-color: var(--iris);
-  border: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
 .team-icon-button:hover,
 .team-icon-button:focus {
   background-color: var(--ocean);
@@ -338,9 +368,7 @@ button {
   justify-content: center;
   align-items: center;
   border-radius: 0 0 4px 4px;
-  box-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08),
-    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
-    0px 2px 1px 0px rgba(46, 47, 66, 0.08);
+  box-shadow: var(--card-shadow);
 }
 
 /* #endregion */
@@ -362,6 +390,12 @@ button {
   justify-content: center;
   align-items: flex-start;
   column-gap: 24px;
+  transition: box-shadow var(--transition-time) var(--transition-funtion);
+}
+
+.portfolio-item:hover,
+.portfolio-item:focus {
+  box-shadow: var(--card-shadow);
 }
 
 .portfolio-item-content {
@@ -375,6 +409,27 @@ button {
   align-self: stretch;
 }
 
+.portfolio-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-hover-desc {
+  position: absolute;
+  top: 0;
+  color: var(--cloud);
+  padding: 40px 32px;
+  background-color: var(--iris);
+  height: 100%;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform var(--transition-time) var(--transition-funtion);
+}
+
+.portfolio-item:hover .portfolio-hover-desc {
+  transform: translateY(0%);
+  color: var(--white);
+}
 /* #endregion */
 
 /* #region Footer */
@@ -399,7 +454,7 @@ button {
 }
 
 .socials-icon-button:hover,
-.team-icon-button:focus {
+.socials-icon-button:focus {
   background-color: var(--green);
 }
 
