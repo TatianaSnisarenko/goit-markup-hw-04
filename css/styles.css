@@ -138,14 +138,6 @@ button {
   flex-wrap: wrap;
 }
 
-.team-icon-list,
-.socials-icon-list {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  margin-top: 8px;
-}
-
 .team-icon-item,
 .socials-icon-item {
   height: 40px;
@@ -200,6 +192,8 @@ button {
 
 .header {
   border-bottom: 1px solid var(--cornflower);
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
 .header .container {
@@ -226,6 +220,10 @@ button {
   display: inline-block;
   transition: color var(--transition-time) var(--transition-funtion);
   position: relative;
+}
+
+.selected {
+  color: var(--ocean);
 }
 
 .selected::after {
@@ -268,6 +266,7 @@ button {
   background-position: center;
   background-size: cover;
   padding: 188px 0;
+  max-width: 1440px;
 }
 
 .hero-title {
@@ -355,6 +354,13 @@ button {
   text-align: center;
 }
 
+.team-icon-list {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 8px;
+}
+
 .team-icon-button:hover,
 .team-icon-button:focus {
   background-color: var(--ocean);
@@ -440,7 +446,11 @@ button {
 
 .footer-wrapper {
   display: flex;
-  gap: 120px;
+  align-items: baseline;
+}
+
+.footer-content {
+  margin-right: 120px;
 }
 
 .footer-desc {
@@ -451,6 +461,13 @@ button {
 .socials-title {
   color: var(--white);
   font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.socials-icon-list {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 
 .socials-icon-button:hover,
